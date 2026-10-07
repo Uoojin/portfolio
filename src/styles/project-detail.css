@@ -1,0 +1,181 @@
+html.project-detail-open {
+    scroll-behavior: auto;
+}
+
+.project-detail {
+    /* One PDF coordinate unit follows height only, never the browser width. */
+    --detail-unit: calc(100svh / 1080);
+    position: relative;
+    background: #fff;
+    color: #000;
+}
+
+.detail-viewport {
+    position: sticky;
+    top: 0;
+    height: 100svh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.detail-track {
+    position: relative;
+    width: calc(var(--track-width) * var(--detail-unit));
+    height: calc(1080 * var(--detail-unit));
+    will-change: transform;
+}
+
+.detail-positioned {
+    position: absolute;
+    left: calc(var(--x) * var(--detail-unit));
+    top: calc(var(--y) * var(--detail-unit));
+    width: calc(var(--w) * var(--detail-unit));
+    height: calc(var(--h, 0) * var(--detail-unit));
+    flex-shrink: 0;
+}
+
+.detail-back {
+    position: absolute;
+    left: calc(43 * var(--detail-unit));
+    top: calc(40 * var(--detail-unit));
+    font-size: calc(20 * var(--detail-unit));
+    line-height: 1;
+    color: #999;
+}
+
+.detail-intro {
+    position: absolute;
+    left: calc(108 * var(--detail-unit));
+    top: calc(527 * var(--detail-unit));
+    width: calc(560 * var(--detail-unit));
+    height: calc(435 * var(--detail-unit));
+}
+
+.detail-intro h1 {
+    font-size: calc(60.073891 * var(--detail-unit));
+    font-weight: 400;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.detail-intro h1 span {
+    font-size: calc(50.895935 * var(--detail-unit));
+    margin-left: calc(24 * var(--detail-unit));
+}
+
+.detail-intro p {
+    position: absolute;
+    font-size: 20px;
+    color: #737373;
+    line-height: 1;
+}
+
+.detail-date {
+    top: calc(115.472656 * var(--detail-unit));
+}
+
+.detail-role {
+    top: calc(170.472656 * var(--detail-unit));
+}
+
+.detail-category {
+    top: calc(225.472656 * var(--detail-unit));
+}
+
+.detail-tools {
+    position: absolute;
+    top: calc(373 * var(--detail-unit));
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(20 * var(--detail-unit));
+}
+
+.detail-tools span {
+    border: 1px solid #b8b8b8;
+    border-radius: 999px;
+    padding: calc(8 * var(--detail-unit)) calc(23 * var(--detail-unit));
+    font-size: 17px;
+    line-height: 1.15;
+    color: #737373;
+    white-space: nowrap;
+}
+
+.detail-media {
+    background: #d9d9d9;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    font-size: calc(var(--label-size) * var(--detail-unit));
+    line-height: 1;
+}
+
+.detail-media img,
+.detail-media video {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.detail-text {
+    height: auto;
+    font-size: calc(30 * var(--detail-unit));
+    line-height: 1.2;
+}
+
+.detail-text h2 {
+    font-size: inherit;
+    font-weight: 400;
+    text-align: center;
+    line-height: 1;
+}
+
+.detail-text>div {
+    margin-top: calc(58 * var(--detail-unit));
+}
+
+.detail-text p {
+    color: #737373;
+    font-size: 20px;
+    line-height: 1.7;
+}
+
+.detail-caption {
+    height: auto;
+    font-size: 20px;
+    line-height: 1.4;
+    color: #737373;
+}
+
+.detail-next {
+    background: #000;
+    color: #fff;
+}
+
+.detail-next>span {
+    position: absolute;
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+.detail-next-label {
+    top: calc(132 * var(--detail-unit));
+    font-size: 17px;
+}
+
+.detail-next-caption {
+    top: calc(840 * var(--detail-unit));
+    font-size: 17px;
+    color: #aeaeae;
+}
+
+.detail-next-title {
+    top: calc(880 * var(--detail-unit));
+    font-size: 25px;
+}
+
+.project-card-link {
+    display: block;
+}
