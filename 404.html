@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UOOJIN — Portfolio</title>
+    <script>
+      const pagesBase = '/portfolio/'
+      const pagesRoute = window.location.pathname + window.location.search + window.location.hash
+      if (window.location.pathname.startsWith(pagesBase)) {
+        window.location.replace(pagesBase + '?__portfolio_route=' + encodeURIComponent(pagesRoute))
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
