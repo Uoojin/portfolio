@@ -5,4 +5,12 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   base: '/portfolio/',
   plugins: [react()],
+  build: {
+    rolldownOptions: {
+      output: {
+        // ASCII output names avoid macOS/Git Unicode normalization mismatches.
+        assetFileNames: 'assets/[hash][extname]',
+      },
+    },
+  },
 })
