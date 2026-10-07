@@ -24,7 +24,7 @@ function About() {
             있습니다.
           </p>
         </div>
-        <img className="about-scribble" src="/assets/Vector-4.svg" alt="" aria-hidden="true" />
+        <img className="about-scribble" src={`${import.meta.env.BASE_URL}assets/Vector-4.svg`} alt="" aria-hidden="true" />
       </div>
       <div className="doc-links">
         <a href={resumePdf} target="_blank" rel="noopener noreferrer">

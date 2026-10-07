@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>UOOJIN — Portfolio</title>
+    <script>
+      // Restore a detail URL after the GitHub Pages 404 fallback redirects here.
+      const pagesRoute = new URLSearchParams(window.location.search).get('__portfolio_route')
+      if (pagesRoute?.startsWith('%BASE_URL%')) {
+        window.history.replaceState(window.history.state, '', pagesRoute)
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

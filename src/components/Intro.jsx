@@ -21,7 +21,7 @@ function Intro() {
           <span>React</span>
         </div>
       </div>
-      <img className="scribble" src="/assets/Vector-4.svg" alt="" aria-hidden="true" />
+      <img className="scribble" src={`${import.meta.env.BASE_URL}assets/Vector-4.svg`} alt="" aria-hidden="true" />
       <Eyes className="floating-eyes eyes" />
     </section>
   )

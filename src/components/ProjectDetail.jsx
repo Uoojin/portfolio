@@ -62,7 +62,7 @@ export default function ProjectDetail({ project, onNavigate, onBack }) {
     <div className="project-detail" ref={shellRef}>
       <div className="detail-viewport" ref={viewportRef}>
         <div className="detail-track" ref={trackRef} style={{ '--track-width': detailLayout.width }}>
-          <a className="detail-back" href="/#projects" onClick={onBack}>&lt; back</a>
+          <a className="detail-back" href={`${import.meta.env.BASE_URL}#projects`} onClick={onBack}>&lt; back</a>
           <section className="detail-intro" aria-label="Project information">
             <h1>{project.url ? <a href={project.url} target="_blank" rel="noreferrer">{project.title} <span>↗︎</span></a> : <>{project.title} <span>↗︎</span></>}</h1>
             <p className="detail-date">{project.date}</p>

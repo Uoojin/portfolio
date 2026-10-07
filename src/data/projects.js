@@ -48,5 +48,5 @@ export const projects = summaries.map((project, index) => ({
   nextProject: summaries[(index + 1) % summaries.length].id,
 }))
 
-export const projectPath = (id) => `/projects/${id}`
+export const projectPath = (id) => `${import.meta.env.BASE_URL}projects/${id}`
 export const findProject = (pathname) => projects.find((project) => projectPath(project.id) === pathname.replace(/\/$/, ''))

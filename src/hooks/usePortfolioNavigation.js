@@ -46,8 +46,8 @@ export default function usePortfolioNavigation() {
     if (returnTo?.depth) {
       window.history.go(-returnTo.depth)
     } else {
-      window.history.replaceState({ portfolioScrollY: 0 }, '', '/#projects')
-      setLocation({ pathname: '/', scrollY: 0 })
+      window.history.replaceState({ portfolioScrollY: 0 }, '', `${import.meta.env.BASE_URL}#projects`)
+      setLocation({ pathname: import.meta.env.BASE_URL, scrollY: 0 })
       window.requestAnimationFrame(() => document.getElementById('projects')?.scrollIntoView({ behavior: 'instant' }))
     }
   }
