@@ -23,8 +23,8 @@ export default function usePortfolioNavigation() {
   }, [])
 
   useLayoutEffect(() => {
-    if (location.scrollY !== null) window.scrollTo({ top: location.scrollY, behavior: 'instant' })
-  }, [location])
+    if (!project && location.scrollY !== null) window.scrollTo({ top: location.scrollY, behavior: 'instant' })
+  }, [location, project])
 
   const navigateProject = (event, id) => {
     if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
@@ -36,12 +36,12 @@ export default function usePortfolioNavigation() {
     window.history.replaceState({ ...state, portfolioScrollY: window.scrollY }, '')
     const pathname = projectPath(id)
     window.history.pushState({ portfolioReturn: returnTo ? { ...returnTo, depth: returnTo.depth + 1 } : null }, '', pathname)
-    setLocation({ pathname, scrollY: 0 })
+    setLocation({ pathname, scrollY: null })
   }
 
   const backToPortfolio = (event) => {
-    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
-    event.preventDefault()
+    if (event && (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)) return
+    event?.preventDefault()
     const returnTo = window.history.state?.portfolioReturn
     if (returnTo?.depth) {
       window.history.go(-returnTo.depth)

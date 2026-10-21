@@ -1,36 +1,9 @@
-function Footer() {
-  return (
-    <footer id="contact">
-      <a className="footer-logo eye-logo inverted" href="#hero" aria-label="UOOJIN">
-        <span>U</span>
-        <span className="logo-eye">
-          <i></i>
-        </span>
-        <span className="logo-eye">
-          <i></i>
-        </span>
-        <span>JIN</span>
-      </a>
-      <div className="contacts">
-        <div>
-          <span>TELL</span>
-          <a href="tel:+821090847995">+82 10 9084 7995</a>
-        </div>
-        <div>
-          <span>EMAIL</span>
-          <a href="mailto:u.ooojini@gmail.com">u.ooojini@gmail.com</a>
-        </div>
-        <div>
-          <span>GITHUB</span>
-          <a href="https://github.com/">https://github.com/</a>
-        </div>
-      </div>
-      <div className="footer-bottom">
-        <p className="copyright">Copyright © 2026 Uoojin All rights reserved</p>
-        <a href="#hero">BACK TO TOP ↑</a>
-      </div>
-    </footer>
-  )
+import Eyes from './Eyes.jsx'
+// Set real social profile URLs here when they are available.
+const socialLinks = [{ label: 'EMAIL', href: 'mailto:u.ooojini@gmail.com' }, { label: 'INSTAGRAM', href: '' }, { label: 'GITHUB', href: '' }]
+export default function Footer() {
+  return <footer id="contact" className="site-footer">
+    <div className="footer-main"><a className="connect-title" href="mailto:u.ooojini@gmail.com">LET’S<br />CONNECT<span className="connect-dot">.</span></a><div className="footer-character" aria-hidden="true"><span className="thanks">Thanks<br />for looking!</span><Eyes /><span className="footer-hands">⌒<span>⌒</span></span></div><nav className="footer-links" aria-label="Contact links">{socialLinks.map(link => link.href ? <a key={link.label} href={link.href}>{link.label} ↗</a> : <span className="social-pending" key={link.label} title="프로필 링크 준비 중">{link.label} <small>준비 중</small></span>)}<a href="#hero">BACK TO TOP ↑</a></nav></div>
+    <div className="footer-bottom"><p>© {new Date().getFullYear()} UOOJIN. All rights reserved.</p><span>SEE YOU AROUND ↗</span></div>
+  </footer>
 }
-
-export default Footer

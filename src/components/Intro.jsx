@@ -1,30 +1,11 @@
 import Eyes from './Eyes.jsx'
-
-function Intro() {
-  return (
-    <section className="intro-section" id="intro">
-      <h1>
-        EXPLORING VISUALS AND INTERACTION
-        <br />
-        ACROSS DIGITAL EXPERIENCES
-      </h1>
-      <div className="skill-card">
-        <b>TOOLS &amp; SKILLS</b>
-        <div className="chips">
-          <span>Figma</span>
-          <span>Photoshop</span>
-          <span>Illustrator</span>
-          <span>After Effects</span>
-          <span>HTML</span>
-          <span>CSS</span>
-          <span>JavaScript</span>
-          <span>React</span>
-        </div>
-      </div>
-      <img className="scribble" src={`${import.meta.env.BASE_URL}assets/Vector-4.svg`} alt="" aria-hidden="true" />
-      <Eyes className="floating-eyes eyes" />
-    </section>
-  )
+const skills = ['Figma', 'Photoshop', 'Illustrator', 'After Effects', 'HTML', 'CSS', 'JavaScript', 'React']
+export default function Intro() {
+  return <section id="intro" className="intro-section" aria-label="Introduction">
+    <h2 className="intro-en">In A Digital Environment, <span tabIndex="0" className="word-visuals">Visuals</span> Meet<br className="desktop-break" />
+      <span tabIndex="0" className="word-interaction">Interaction</span> To Create <span tabIndex="0" className="word-experiences">Experiences</span><br className="desktop-break" />
+      People Can See, Move Through &amp; Shape.</h2>
+    <div className="skill-card"><h3>TOOLS &amp; SKILLS</h3><div className="chips">{skills.map(skill => <span key={skill}>{skill}</span>)}</div><Eyes className="floating-eyes eyes" /></div>
+    <img className="intro-scribble" src={`${import.meta.env.BASE_URL}assets/Vector-4.svg`} alt="" aria-hidden="true" />
+  </section>
 }
-
-export default Intro

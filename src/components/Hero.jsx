@@ -1,17 +1,6 @@
-import Eyes from './Eyes.jsx'
-
-function Hero() {
-  return (
-    <section id="hero" className="hero">
-      <div className="hero-logo">
-        <span>U</span>
-        <Eyes />
-        <span>JIN</span>
-      </div>
-      <p>MAKING THINGS TO SEE, MOVE &amp; INTERACT WITH.</p>
-      <span className="scroll-mark"></span>
-    </section>
-  )
+import { useRef } from 'react'
+import Brand from './Brand.jsx'
+export default function Hero() {
+  const ref = useRef(null)
+  return <section ref={ref} id="hero" className="hero" aria-label="UOOJIN portfolio"><h1><Brand interactive scopeRef={ref} /></h1></section>
 }
-
-export default Hero
