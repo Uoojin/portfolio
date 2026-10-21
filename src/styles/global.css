@@ -686,7 +686,7 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible {
 
 
 .site-footer {
-    background:black;
+    background:#f0f0ef;
     padding:5vw 4.2vw 2vw;
     position:relative;
 }
@@ -702,7 +702,7 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible {
 }
 
 .connect-title {
-    color:#f0f0ef;
+    color:var(--ink);
     font-size:clamp(52px,7.3vw,125px);
     line-height:.84;
     letter-spacing:-.065em;
@@ -718,7 +718,7 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible {
     gap:15px;
     font-size:clamp(10px,1vw,14px);
     padding-bottom:10px;
-    color:#f0f0ef98;
+    color:var(--ink);
 }
 
 .footer-links a:hover {
@@ -726,12 +726,12 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible {
 }
 
 .social-pending {
-    color:#f0f0ef98;
+    color:var(--ink);
 }
 
 .social-pending small {
     font-size:8px;
-    color:#f0f0ef98;
+    color:var(--ink);
     margin-left:7px;
 }
 
@@ -764,13 +764,13 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible {
     position:absolute;
     bottom:95%;
     left:105%;
-    border:1.5px solid #f0f0ef98;
+    border:1.5px solid var(--ink);
     border-radius:50%;
     padding:18px 26px;
     font-size:14px;
     white-space:nowrap;
     transform:rotate(-9deg);
-    color:#f0f0ef98;
+    color:var(--ink);
 }
 
 .footer-hands {
@@ -789,7 +789,7 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible {
     justify-content:space-between;
     font-size:clamp(8px,.8vw,11px);
     padding-top:18px;
-    color:#f0f0ef98;
+    color:var(--ink);
 }
 
 .footer-bottom>span {
