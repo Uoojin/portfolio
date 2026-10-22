@@ -1,11 +1,24 @@
-import Eyes from './Eyes.jsx'
-const skills = ['Figma', 'Photoshop', 'Illustrator', 'After Effects', 'HTML', 'CSS', 'JavaScript', 'React']
+import globe from '../assets/icon1.png'
+import cursor from '../assets/icon2.png'
+import asterisk from '../assets/icon3.png'
+import circles from '../assets/icon4.png'
+import pixels from '../assets/icon5.png'
+import eyes from '../assets/icon6.png'
+
+const Graphic = ({ src, className }) => <img className={`slogan-graphic ${className}`} src={src} alt="" aria-hidden="true" draggable="false" />
+
 export default function Intro() {
   return <section id="intro" className="intro-section" aria-label="Introduction">
-    <h2 className="intro-en">In A Digital Environment, <span tabIndex="0" className="word-visuals">Visuals</span> Meet<br className="desktop-break" />
-      <span tabIndex="0" className="word-interaction">Interaction</span> To Create <span tabIndex="0" className="word-experiences">Experiences</span><br className="desktop-break" />
-      People Can See, Move Through &amp; Shape.</h2>
-    <div className="skill-card"><h3>TOOLS &amp; SKILLS</h3><div className="chips">{skills.map(skill => <span key={skill}>{skill}</span>)}</div><Eyes className="floating-eyes eyes" /></div>
-    <img className="intro-scribble" src={`${import.meta.env.BASE_URL}assets/Vector-4.svg`} alt="" aria-hidden="true" />
+    <h2 className="intro-en">
+      <span className="slogan-line">In A Digital <Graphic src={globe} className="slogan-globe" /> Environment, <Graphic src={cursor} className="slogan-cursor" /></span>{' '}
+      <span className="slogan-line">Visuals <Graphic src={asterisk} className="slogan-asterisk" /> Meet Interaction <Graphic src={circles} className="slogan-circles" /></span>{' '}
+      <span className="slogan-line">To Create Experiences <Graphic src={pixels} className="slogan-pixels" /> People Can</span>{' '}
+      <span className="slogan-line">See, <Graphic src={eyes} className="slogan-eyes" /> Move Through &amp; Shape.</span>
+    </h2>
+    <div className="tools-skills">
+      <h3>TOOLS &amp; SKILLS</h3>
+      <p>Figma, Photoshop, Illustrator, After Effects</p>
+      <p>HTML, CSS, JavaScript, React</p>
+    </div>
   </section>
 }

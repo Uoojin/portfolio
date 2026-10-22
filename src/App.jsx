@@ -4,9 +4,10 @@ import Intro from './components/Intro.jsx'
 import Footer from './components/Footer.jsx'
 import Header from './components/Header.jsx'
 import Hero from './components/Hero.jsx'
-import Workspace from './components/Workspace.jsx'
+import Projects from './components/Projects.jsx'
 import ProjectDetail from './components/ProjectDetail.jsx'
 import usePortfolioNavigation from './hooks/usePortfolioNavigation.js'
+import './styles/portfolio.css'
 
 export default function App() {
   const { project, navigateProject, backToPortfolio } = usePortfolioNavigation()
@@ -25,7 +26,7 @@ export default function App() {
     return () => { window.removeEventListener('pointermove', follow); cancelAnimationFrame(frame) }
   }, [])
   return <>
-    <div inert={Boolean(project)} aria-hidden={project ? true : undefined} className="portfolio"><Header /><main><Hero /><Intro /><Workspace active={!project} onNavigate={navigateProject} /><About /></main><Footer /></div>
+    <div inert={Boolean(project)} aria-hidden={project ? true : undefined} className="portfolio"><Header /><main><Hero /><Intro /><Projects onNavigate={navigateProject} /><About /></main><Footer /></div>
     {project && <ProjectDetail project={project} onBack={backToPortfolio} />}
   </>
 }

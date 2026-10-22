@@ -1,7 +1,7 @@
 import { useId, useRef } from 'react'
 import useSvgPupils from '../hooks/useSvgPupils.js'
 
-// Original HERO geometry is unchanged. Only independent group transforms move letters.
+// Existing wordmark outlines retain independent drag transforms and pupil tracking.
 export default function Brand({ className = '', interactive = false, scopeRef }) {
   const id = useId()
   const svgRef = useRef(null)
@@ -54,17 +54,18 @@ export default function Brand({ className = '', interactive = false, scopeRef })
       event.currentTarget.setAttribute('transform', `translate(${position.x} ${position.y})`)
     },
   }
-  return <svg ref={svgRef} className={`brand ${className}`} viewBox="0 0 700 300" role={interactive ? 'group' : 'img'} aria-labelledby={id} onDragStart={event => event.preventDefault()}>
+  return <svg ref={svgRef} className={`brand ${className}`} viewBox="0 0 700 180" role={interactive ? 'group' : 'img'} aria-labelledby={id} onDragStart={event => event.preventDefault()}>
     <title id={id}>UOOJIN</title>
-    <g fill="none" stroke="currentColor" strokeWidth="47" strokeLinecap="round" strokeLinejoin="round">
-      <g {...dragProps} data-letter="U" aria-label="U 글자 이동 (드래그 또는 방향키)"><path d="M31 136 57 211C70 249 120 238 137 219C156 198 142 176 130 155L109 109" /></g>
-      <g {...dragProps} data-letter="J" aria-label="J 글자 이동 (드래그 또는 방향키)"><path d="m410 149 62 8-10 82c-5 43-79 35-69-11" /></g>
-      <g {...dragProps} data-letter="I" aria-label="I 글자 이동 (드래그 또는 방향키)"><path d="m523 26 5 114" /></g>
-      <g {...dragProps} data-letter="N" aria-label="N 글자 이동 (드래그 또는 방향키)"><path d="m574 228 10-91c3-33 19-32 25-3l22 93c6 30 31 29 33 0l11-102" /></g>
+    {/* Reuse the existing wordmark outlines, aligned to the reference baseline. */}
+    <g fill="currentColor">
+      <g {...dragProps} data-letter="U" aria-label="U 글자 이동 (드래그 또는 방향키)"><path transform="translate(0 9) scale(1.8) translate(-111 -114)" d="M111 127C111 109 137 109 137 127V160C137 173 141 177 150 177C160 177 164 172 164 163C164 150 156 137 156 127C156 109 184 109 184 128V162C184 189 171 202 149 202C124 202 111 188 111 163Z" /></g>
+      <g {...dragProps} data-letter="J" aria-label="J 글자 이동 (드래그 또는 방향키)"><path transform="translate(354 9) scale(1.8) translate(-360 -114)" d="M379 114H411C420 114 425 120 425 129V166C425 190 413 202 392 202C370 202 360 191 360 173C360 152 385 152 385 171C385 178 388 181 392 181C398 181 400 178 400 171V158C400 150 404 145 409 141H379C360 141 360 114 379 114Z" /></g>
+      <g {...dragProps} data-letter="I" aria-label="I 글자 이동 (드래그 또는 방향키)"><path transform="translate(488 9) scale(1.8) translate(-426 -114)" d="M426 127C426 109 452 109 452 127V189C452 207 426 207 426 189Z" /></g>
+      <g {...dragProps} data-letter="N" aria-label="N 글자 이동 (드래그 또는 방향키)"><path transform="translate(553 9) scale(1.8) translate(-455 -114)" d="M455 189V131C455 119 461 113 472 113C484 113 489 119 493 132L504 174H505V127C505 109 530 109 530 127V185C530 196 525 202 514 202C503 202 498 197 494 184L482 153H480V189C480 206 455 206 455 189Z" /></g>
     </g>
-    <g fill="var(--paper)" stroke="var(--ink)" strokeWidth="4">
-      <circle cx="217" cy="187" r="57" /><circle cx="323" cy="155" r="57" />
+    <g fill="#fff" stroke="var(--ink)" strokeWidth="4">
+      <circle cx="187" cy="119" r="57" /><circle cx="300" cy="116" r="57" />
     </g>
-    <g fill="var(--ink)"><circle data-pupil="" data-eye-x="217" data-eye-y="187" data-eye-radius="57" data-eye-stroke="4" cx="235" cy="192" r="21" /><circle data-pupil="" data-eye-x="323" data-eye-y="155" data-eye-radius="57" data-eye-stroke="4" cx="332" cy="160" r="21" /></g>
+    <g fill="var(--ink)"><circle data-pupil="" data-eye-x="187" data-eye-y="119" data-eye-radius="57" data-eye-stroke="4" cx="204" cy="129" r="21" /><circle data-pupil="" data-eye-x="300" data-eye-y="116" data-eye-radius="57" data-eye-stroke="4" cx="310" cy="126" r="21" /></g>
   </svg>
 }
