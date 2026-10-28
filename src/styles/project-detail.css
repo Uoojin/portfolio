@@ -32,7 +32,7 @@
     background:transparent;
     box-shadow:none;
     color:#c6c6c6;
-    font-size:clamp(22px,2.3dvh,26px);
+    font-size:clamp(24px,4.2dvh,44px);
     font-weight:400;
     line-height:1;
 }
@@ -62,63 +62,78 @@
 }
 /* The intro retains the 16:9 canvas, bounded by the viewport on taller screens. */
 .pd-intro { --pd-width:min(100vw,177.7778dvh); }
-.pd-heading { position:absolute; top:7%; left:4%; right:10%; z-index:1; }
-.pd-title-line { display:flex; align-items:center; gap:clamp(12px,1.6dvh,20px); }
+.pd-heading { position:absolute; top:8%; left:3.5%; right:10%; z-index:1; }
+.pd-title-line { display:flex; align-items:center; gap:clamp(14px,3.5dvh,38px); }
 .pd-title-line h1 {
     font-family:'Bagel Fat One',sans-serif;
-    font-size:clamp(28px,3.7dvh,44px);
+    font-size:clamp(30px,7.3dvh,80px);
     line-height:1.12;
     font-weight:400;
     color:var(--project-color);
     letter-spacing:-.025em;
 }
-.pd-external { color:var(--project-color); font-size:clamp(18px,2.1dvh,25px); line-height:1; }
+.pd-external { color:var(--project-color); font-size:clamp(20px,4.2dvh,46px); line-height:1; }
 .pd-link-unavailable { cursor:default; color:#c6c6c6; }
-.pd-heading>p { margin-top:clamp(8px,1dvh,12px); font-size:clamp(11px,1.3dvh,15px); line-height:1.5; }
+.pd-heading>p { margin-top:clamp(10px,1.8dvh,20px); font-size:clamp(12px,2.1dvh,23px); line-height:1.5; }
 .pd-monitor {
     position:absolute;
-    top:50%;
+    bottom:0;
     left:50%;
-    transform:translate(-50%,-50%);
+    transform:translateX(-50%);
     display:block;
-    width:68%;
-    height:62%;
+    width:64%;
+    height:77%;
     object-fit:contain;
-    object-position:center;
+    object-position:center bottom;
 }
-.pd-role { position:absolute; left:4%; bottom:7%; width:28%; font-size:clamp(10px,1.22dvh,14px); line-height:1.7; word-break:keep-all; }
+.pd-role { position:absolute; left:3.5%; bottom:5.5%; width:23%; font-size:clamp(11px,1.7dvh,18px); line-height:1.7; word-break:keep-all; }
 .pd-role p+p { margin-top:.25em; color:var(--project-color); font-size:.94em; }
-.pd-meta { position:absolute; right:4%; bottom:7%; width:18%; font-size:clamp(10px,1.22dvh,14px); line-height:1.8; }
-.pd-meta>div { display:grid; grid-template-columns:4.8em 1fr; gap:1.2em; }
+.pd-meta { position:absolute; right:3.5%; bottom:5.5%; width:13%; font-size:clamp(11px,1.7dvh,18px); line-height:1.8; }
+.pd-meta>div { display:grid; grid-template-columns:4.8em 1fr; gap:1.4em; }
 .pd-meta dt { color:#999; }
 .pd-meta dd { word-break:keep-all; }
 .pd-overview { --pd-width:72dvh; }
-.pd-overview h2 { position:absolute; top:11%; left:0; width:100%; text-align:center; font-size:clamp(11px,1.3dvh,15px); line-height:1.5; font-weight:400; }
-.pd-overview-copy { position:absolute; left:13%; right:13%; bottom:15%; }
-.pd-overview-copy h3 { margin-bottom:clamp(22px,2.6dvh,32px); font-size:clamp(22px,2.7dvh,32px); line-height:1.4; font-weight:500; letter-spacing:-.035em; word-break:keep-all; }
-.pd-overview-ko { font-size:clamp(16px,1.95dvh,23px); line-height:1.6; letter-spacing:-.035em; word-break:keep-all; }
+.pd-overview h2 { position:absolute; top:11%; left:0; width:100%; text-align:center; font-size:clamp(12px,1.75dvh,19px); line-height:1.5; font-weight:400; }
+.pd-overview-copy { position:absolute; left:11%; right:11%; bottom:8.5%; }
+.pd-overview-copy h3 { max-width:13.5em; margin-bottom:clamp(22px,2.6dvh,32px); font-size:clamp(23px,3.6dvh,39px); line-height:1.4; font-weight:500; letter-spacing:-.035em; word-break:keep-all; }
+.pd-overview-ko { font-size:clamp(16px,2.25dvh,25px); line-height:1.6; letter-spacing:-.035em; word-break:keep-all; }
 .pd-overview-ko+p.pd-overview-ko { margin-top:.75em; }
 .pd-overview-ko strong { color:var(--project-color); font-weight:400; }
-.pd-overview-en { margin-top:clamp(24px,2.96dvh,36px); font-size:clamp(11px,1.3dvh,15px); line-height:1.5; color:#8887b4; }
+.pd-overview-en { margin-top:clamp(30px,7dvh,76px); font-size:clamp(12px,1.7dvh,18px); line-height:1.5; color:#8887b4; }
 /* Full-height artwork determines its section width, never the viewport width. */
 .pd-visual { --pd-width:calc(100dvh * var(--pd-media-ratio)); display:flex; align-items:stretch; padding:0; }
 .pd-visual figure { flex:none; width:calc(100dvh * var(--pd-media-ratio)); height:100%; margin:0; }
 .pd-visual img { display:block; width:100%; height:100%; object-fit:contain; }
+/* This transparent structure diagram has no built-in canvas margins. */
+.pd-visual[data-section="PROJECT STRUCTURE"] {
+    --pd-width:calc(70.6dvh * var(--pd-media-ratio) + 23.4dvh);
+    align-items:center;
+    padding:0 11.7dvh;
+}
+.pd-visual[data-section="PROJECT STRUCTURE"] figure {
+    width:calc(70.6dvh * var(--pd-media-ratio));
+    height:70.6%;
+}
+.pd-visual[data-section="SERVICE STRUCTURE"] {
+    --pd-width:calc(100dvh * var(--pd-media-ratio) + 38dvh);
+    padding:0 19dvh;
+}
 .pd-visual-description { --pd-width:calc(100dvh * var(--pd-media-ratio) / .79); }
-.pd-visual-copy { flex:1; min-width:0; align-self:flex-end; padding:0 clamp(24px,4dvh,56px) 7dvh; font-size:clamp(13px,1.6dvh,18px); line-height:1.65; letter-spacing:-.025em; word-break:keep-all; }
-.pd-visual-copy p { max-width:34em; }
+.pd-visual-copy { flex:1; min-width:0; align-self:flex-end; padding:0 clamp(24px,4dvh,56px) 7dvh; font-size:clamp(13px,1.85dvh,20px); line-height:1.65; letter-spacing:-.025em; word-break:keep-all; }
+.pd-visual-copy p { max-width:25em; }
 .pd-visual-copy p+p { margin-top:1.25em; }
 .pd-next { --pd-width:82dvh; display:grid; place-items:center; }
-.pd-next a { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:clamp(8px,1.1dvh,14px); text-align:center; color:var(--next-color); font-family:'Bagel Fat One',sans-serif; font-size:clamp(34px,4.65dvh,54px); line-height:1.15; letter-spacing:-.025em; white-space:nowrap; }
+.pd-next a { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:clamp(8px,1.1dvh,14px); text-align:center; color:var(--next-color); font-family:'Bagel Fat One',sans-serif; font-size:clamp(36px,7.3dvh,80px); line-height:1.15; letter-spacing:-.025em; white-space:nowrap; }
 .pd-next a>span:last-child { font-family:'Pretendard',sans-serif; font-size:.72em; line-height:1; }
 @media(max-width:767px) {
     .pd-close { top:10px; right:10px; font-size:24px; }
     .pd-intro { --pd-width:100vw; }
     .pd-heading { left:6%; right:8%; }
     .pd-title-line { gap:12px; }
+    .pd-external { font-size:24px; }
     .pd-title-line h1 { font-size:clamp(26px,7.8vw,38px); }
     .pd-heading>p { font-size:clamp(11px,2.9vw,14px); }
-    .pd-monitor { width:88%; height:62%; }
+    .pd-monitor { top:50%; bottom:auto; width:88%; height:62%; transform:translate(-50%,-50%); object-position:center; }
     .pd-role { left:6%; width:40%; font-size:clamp(10px,2.8vw,13px); }
     .pd-meta { right:6%; width:42%; font-size:clamp(9px,2.55vw,12px); }
     .pd-meta>div { grid-template-columns:4.5em 1fr; gap:.7em; }
@@ -133,8 +148,8 @@
     .pd-next a { font-size:clamp(26px,7.7vw,42px); }
 }
 @media(max-height:600px) {
-    .pd-title-line h1 { font-size:clamp(23px,3.7dvh,36px); }
-    .pd-overview-copy h3 { font-size:clamp(17px,2.7dvh,25px); margin-bottom:16px; }
+    .pd-title-line h1 { font-size:clamp(23px,6.7dvh,40px); }
+    .pd-overview-copy h3 { font-size:clamp(17px,3.6dvh,25px); margin-bottom:16px; }
     .pd-overview-ko { font-size:clamp(12px,1.95dvh,18px); }
     .pd-overview-en { font-size:clamp(10px,1.3dvh,13px); margin-top:18px; }
     .pd-visual-copy { font-size:clamp(11px,1.6dvh,15px); }
