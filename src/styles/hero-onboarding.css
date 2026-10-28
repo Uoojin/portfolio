@@ -1,0 +1,108 @@
+/* Selection suppression is limited to the HERO's draggable letters and eyes. */
+.hero .brand-letter,
+.hero .brand-oo,
+.hero .brand-eyes,
+.hero .brand-eyes * {
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+}
+
+.after-hero {
+    display: contents;
+}
+
+.portfolio:not([data-onboarding='complete']) .after-hero {
+    visibility: hidden;
+}
+
+.portfolio:not([data-onboarding='complete']) .hero {
+    overflow: clip;
+}
+
+.portfolio[data-onboarding='loading'] .hero .brand-letter,
+.portfolio[data-onboarding='loading'] .hero .brand-oo {
+    visibility: hidden;
+}
+
+.portfolio[data-onboarding='loading'] .site-header,
+.portfolio[data-onboarding='dropping'] .site-header,
+.portfolio[data-onboarding='loading'] .hero-caption,
+.portfolio[data-onboarding='dropping'] .hero-caption {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Drag owns the individual translate property. Entrance owns transform,
+   retaining each letter's original rotation at every frame. */
+.hero .brand-j {
+    --landing-rotation: 6deg;
+}
+
+.hero .brand-i {
+    --landing-rotation: -2deg;
+}
+
+.hero .brand-u {
+    --drop-delay: 0ms;
+}
+
+.hero .brand-oo {
+    --drop-delay: 150ms;
+}
+
+.hero .brand-j {
+    --drop-delay: 300ms;
+}
+
+.hero .brand-i {
+    --drop-delay: 450ms;
+}
+
+.hero .brand-n {
+    --drop-delay: 600ms;
+}
+
+.portfolio[data-onboarding='dropping'] .hero .brand-letter,
+.portfolio[data-onboarding='dropping'] .hero .brand-oo {
+    animation: hero-letter-drop 900ms var(--drop-delay) both;
+    pointer-events: none;
+    will-change: transform;
+}
+
+@keyframes hero-letter-drop {
+    0% {
+        transform: translateY(-110svh) rotate(var(--landing-rotation, 0deg));
+        animation-timing-function: cubic-bezier(.55, .02, .8, .45);
+    }
+
+    72% {
+        transform: translateY(0) rotate(var(--landing-rotation, 0deg));
+        animation-timing-function: cubic-bezier(.2, .6, .35, 1);
+    }
+
+    86% {
+        transform: translateY(-.025em) rotate(var(--landing-rotation, 0deg));
+        animation-timing-function: ease-in;
+    }
+
+    100% {
+        transform: translateY(0) rotate(var(--landing-rotation, 0deg));
+    }
+}
+
+.portfolio[data-onboarding='revealing'] .site-header,
+.portfolio[data-onboarding='revealing'] .hero-caption {
+    animation: hero-ui-reveal 450ms ease-out both;
+}
+
+@keyframes hero-ui-reveal {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

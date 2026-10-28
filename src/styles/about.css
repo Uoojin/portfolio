@@ -1,123 +1,166 @@
-/* Restored original ABOUT composition. The introductory slogan stays in Intro. */
 .about-section {
-    position:relative;
-    padding:2vw 4.85vw 0;
-    background:#fff;
-    color:#000;
-    scroll-margin-top:72px;
-    overflow:clip;
+    position: relative;
+    padding: 9vw 4.7vw 5.6vw 6.7vw;
+    background: var(--paper);
+    color: #000;
+    scroll-margin-top: 60px;
 }
-.about-section>h2 {
-    font-size:clamp(32px,3.1vw,48px);
-    line-height:1.2;
-    font-weight:400;
-}
-.about-top { margin-top:4.3vw; }
-.about-logo {
-    display:flex;
-    align-items:center;
-    width:max-content;
-    height:clamp(58px,5.53vw,88px);
-    font-size:clamp(62px,5.93vw,94px);
-    font-weight:400;
-    line-height:.8;
-    letter-spacing:-.045em;
-    color:var(--blue);
-}
-.about-logo>span:first-child { margin-right:.12em; }
-.about-logo>span:last-child { margin-left:.025em; }
-.about-logo-eyes { display:block; width:auto; height:100%; flex:none; }
-.about-en {
-    margin:2.9vw 0 0;
-    font-size:clamp(28px,3.2vw,48px);
-    font-weight:300;
-    line-height:1.35;
-    letter-spacing:-.01em;
-}
-.about-ko {
-    width:58.3vw;
-    max-width:865px;
-    margin-top:2.7vw;
-    color:#777;
-    font-size:clamp(16px,1.75vw,27px);
-    font-weight:300;
-    line-height:1.65;
-    word-break:keep-all;
-}
-.about-scribble {
-    position:absolute;
-    width:21vw;
-    max-width:330px;
-    aspect-ratio:383 / 173;
-    top:16.8vw;
-    right:12vw;
-    background:var(--blue);
-    -webkit-mask:var(--scribble-url) center / contain no-repeat;
-    mask:var(--scribble-url) center / contain no-repeat;
-}
-.doc-links {
-    display:flex;
-    flex-direction:column;
-    gap:.9vw;
-    width:28.2vw;
-    max-width:440px;
-    margin:7.7vw 0 0 auto;
-}
-.doc-links a {
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    height:clamp(50px,4.3vw,68px);
-    padding:0 2.8vw;
-    border:1px solid var(--blue);
-    border-radius:999px;
-    background:transparent;
-    color:var(--blue);
-    font-size:clamp(14px,1.48vw,23px);
-    font-weight:400;
-    transition:background-color .22s ease,color .22s ease;
-}
-.doc-links a:hover,.doc-links a:focus-visible { background:var(--blue); color:#fff; }
-.doc-links a>span { font-size:1.1em; }
-/* The four overlapping silhouettes reproduce the reference's cropped card stack. */
-.about-bottom-graphics {
-    position:relative;
-    height:155px;
-    margin-top:8.3vw;
-    overflow:clip;
-}
-.about-bottom-graphics>span {
-    position:absolute;
-    width:28.8%;
-    height:210px;
-    border-radius:8px 8px 0 0;
-    background:#ebebeb;
-}
-.about-bottom-graphics>span:nth-child(1) { left:2.1%; top:37px; }
-.about-bottom-graphics>span:nth-child(2) { left:23%; top:0; background:#ebebeb; }
-.about-bottom-graphics>span:nth-child(3) { left:55.5%; top:65px; transform:rotate(6deg); transform-origin:top left; }
-.about-bottom-graphics>span:nth-child(4) { left:69.1%; top:25px; transform:rotate(-3.7deg); transform-origin:top left; background:#ebebeb; }
 
-@media(max-width:1000px) and (min-width:701px) {
-    .about-en { font-size:3.1vw; }
-    .about-logo { height:5.53vw; font-size:5.93vw; }
-    .about-ko { width:62vw; font-size:clamp(15px,1.75vw,18px); }
-    .doc-links { width:34vw; }
+.about-top {
+    position: relative;
+    width: 65vw;
+    min-height: 29.6vw;
+    margin: 0;
+    padding: 4.7vw 6.5vw 4.5vw;
+    background: #eceefa;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6.4vw), calc(100% - 7.9vw) 100%, 0 100%);
+    overflow: visible;
 }
-@media(max-width:700px) {
-    .about-section { padding:36px 6vw 0; }
-    .about-section>h2 { font-size:30px; }
-    .about-top { margin-top:48px; }
-    .about-logo { height:clamp(48px,12vw,70px); font-size:clamp(52px,13vw,75px); }
-    .about-en { margin-top:32px; font-size:clamp(20px,4.25vw,29px); line-height:1.4; }
-    .about-ko { width:100%; max-width:600px; margin-top:30px; font-size:15px; line-height:1.85; }
-    .about-scribble { position:relative; top:auto; right:auto; width:34vw; margin:32px 2vw 0 auto; }
-    .doc-links { width:100%; max-width:440px; margin:36px 0 0 auto; gap:12px; }
-    .doc-links a { height:54px; padding:0 24px; font-size:15px; }
-    .about-bottom-graphics { height:90px; margin-top:66px; }
-    .about-bottom-graphics>span { height:150px; border-radius:5px 5px 0 0; }
-    .about-bottom-graphics>span:nth-child(1) { top:23px; }
-    .about-bottom-graphics>span:nth-child(3) { top:40px; }
-    .about-bottom-graphics>span:nth-child(4) { top:15px; }
+
+/* The separate eye layer extends across the top edge without being clipped. */
+.about-logo {
+    position: absolute;
+    left: 8.4vw;
+    top: 5.7vw;
+    width: 11.3vw;
+    height: 5.7vw;
+    display: block;
+    z-index: 1;
 }
-@media(prefers-reduced-motion:reduce) { .doc-links a { transition:none; } }
+
+.about-logo-eyes {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.about-top:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 7.9vw;
+    height: 7.5vw;
+    background: #d9dfff;
+    clip-path: polygon(0 0, 100% 14%, 0 100%);
+}
+
+#about-title {
+    text-align: center;
+    font-size: clamp(14px, 1.8vw, 40px);
+    line-height: 1.2;
+}
+
+.about-en {
+    margin: 2.5vw -1vw 0;
+    text-align: center;
+    font-size: 2vw;
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: -.025em;
+}
+
+.about-ko {
+    width: auto;
+    margin: 2.4vw 1.6vw 0;
+    text-align: center;
+    color: #888;
+    font-size: 1.3vw;
+    font-weight: 300;
+    line-height: 1.65;
+    letter-spacing: -.045em;
+    word-break: keep-all;
+}
+
+.doc-links {
+    display: flex;
+    flex-direction: column;
+    gap: .9vw;
+    width: 28.2vw;
+    max-width: none;
+    margin: 5vw 0 0 auto;
+}
+
+.doc-links a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4vw;
+    padding: 0 2.8vw;
+    border: 1px solid #bcbcbc;
+    border-radius: 999px;
+    background: transparent;
+    color: #777;
+    font-size: 1.2vw;
+    font-weight: 400;
+    transition: background-color .22s ease, color .22s ease;
+}
+
+.doc-links a:hover,
+.doc-links a:focus-visible {
+    background: var(--blue);
+    color: #fff;
+}
+
+.doc-links a>span {
+    font-size: 1.1em;
+}
+
+@media(max-width:767px) {
+    .about-section {
+        padding: 16vw 5vw 18vw;
+    }
+
+    .about-top {
+        width: 100%;
+        min-height: 0;
+        padding: 10vw 6vw 12vw;
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10vw), calc(100% - 12vw) 100%, 0 100%);
+    }
+
+    .about-logo {
+        left: 8vw;
+        top: 9vw;
+        width: 20vw;
+        height: 10vw;
+    }
+
+    .about-top:after {
+        width: 12vw;
+        height: 12vw;
+    }
+
+    #about-title {
+        font-size: clamp(14px, 4vw, 30px);
+    }
+
+    .about-en {
+        margin-top: 6vw;
+        font-size: 4.5vw;
+        line-height: 1.35;
+    }
+
+    .about-ko {
+        margin: 6vw 0 0;
+        font-size: 3.2vw;
+        line-height: 1.8;
+    }
+
+    .doc-links {
+        width: 64vw;
+        gap: 10px;
+        margin-top: 8vw;
+    }
+
+    .doc-links a {
+        height: 42px;
+        padding: 0 20px;
+        font-size: 12px;
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    .doc-links a {
+        transition: none;
+    }
+}

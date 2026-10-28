@@ -1,108 +1,757 @@
-/* Reference layout. Shared ABOUT, ending graphics and footer keep their styles. */
-:root { --ink:#1D1D1D; }
-html { scroll-padding-top:100px; }
+@font-face {
+    font-family: 'Bagel Fat One';
+    src: url('../assets/fonts/BagelFatOne-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('../assets/fonts/PretendardVariable.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+}
+
+:root {
+    --ink: #1d1d1d;
+    font-family: 'Pretendard', sans-serif;
+}
+
+input,
+textarea,
+select,
+button {
+    font-family: inherit;
+}
+
+.brand {
+    position: relative;
+    display: block;
+    container-type: inline-size;
+    width: 100%;
+    aspect-ratio: 694 / 180;
+    font-family: 'Bagel Fat One', sans-serif;
+    font-weight: 400;
+    color: var(--blue);
+    line-height: 1;
+    letter-spacing: 0;
+    user-select: text;
+    -webkit-user-select: text;
+}
+
+.brand-letter,
+.brand-oo {
+    position: absolute;
+    bottom: -.045em;
+    font-size: clamp(24px, 32cqw, 700px);
+    line-height: 1;
+}
+
+.brand-u {
+    left: -1%;
+}
+
+.brand-j {
+    left: 50.6%;
+    transform: rotate(6deg);
+}
+
+.brand-i {
+    left: 70.2%;
+    transform: rotate(-2deg);
+}
+
+.brand-n {
+    left: 79%;
+}
+
+.brand-oo {
+    left: 18.4%;
+    bottom: 0;
+    width: 33.5%;
+    height: 67.2%;
+    color: transparent;
+    z-index: 2;
+}
+
+.brand .brand-eyes {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.brand-oo::selection {
+    color: var(--paper);
+}
+
+.hero .brand,
+.hero-letter {
+    user-select: text;
+    -webkit-user-select: text;
+}
+
+.header-wordmark {
+    aspect-ratio: 419 / 114;
+}
+
+.header-wordmark .brand-letter,
+.header-wordmark .brand-oo {
+    font-size: clamp(16px, 28cqw, 60px);
+}
+
+.header-wordmark .brand-u {
+    left: 0;
+}
+
+.header-wordmark .brand-j {
+    left: 60%;
+    transform: none;
+}
+
+.header-wordmark .brand-i {
+    left: 75%;
+    transform: none;
+}
+
+.header-wordmark .brand-n {
+    left: 82%;
+}
+
+.header-wordmark .brand-oo {
+    left: 19%;
+    width: 40%;
+    height: 78%;
+    bottom: 20%;
+}
+
+.footer-logo .brand {
+    color: #fff;
+}
+
+html {
+    scroll-padding-top: 100px;
+}
+
+.portfolio {
+    overflow: clip;
+}
+
 .site-header {
-    inset:0 0 auto;
-    transform:none;
-    width:100%;
-    height:clamp(76px,8vw,116px);
-    padding:0 4.2vw;
-    justify-content:space-between;
-    background:var(--paper);
+    position: fixed;
+    inset: 2.8vw auto auto 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    height: auto;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.4vw;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    backdrop-filter: none;
 }
-.site-header>a { width:7.2vw; min-width:78px; }
-.site-header nav { border:0; border-radius:0; background:transparent; gap:4vw; overflow:visible; }
-.site-header nav a { padding:10px 0; color:var(--ink); font-size:clamp(11px,1vw,16px); }
-.site-header nav a:hover { color:var(--blue); background:transparent; }
+
+.site-header>a {
+    display: block;
+    width: 7.2vw;
+    min-width: 78px;
+}
+
+.site-header nav {
+    display: flex;
+    border: 0;
+    border-radius: 999px;
+    background: #eee;
+    gap: 0;
+    overflow: hidden;
+}
+
+.site-header nav a {
+    padding: .55em 1.8em;
+    color: var(--ink);
+    font-size: clamp(11px, 1.03vw, 18px);
+    line-height: 1.2;
+}
+
+.site-header nav a:hover {
+    color: var(--blue);
+    background: #e8e8e8;
+}
+
 .hero {
-    height:64.5vw;
-    min-height:0;
-    max-height:none;
-    display:block;
-    padding:29.5vw 4.2vw 0;
+    height: 100svh;
+    min-height: 440px;
+    max-height: none;
+    display: block;
+    padding: 0;
 }
-.hero h1 { width:100%; transform:none; }
+
+.hero h1 {
+    position: absolute;
+    width: 91.2%;
+    left: 4.6%;
+    bottom: 6.3%;
+    transform: none;
+}
+
 .hero-caption {
-    position:absolute;
-    top:22.3vw;
-    right:5.4vw;
-    text-align:right;
-    font-size:clamp(12px,1.25vw,22px);
-    line-height:1.2;
-    font-weight:400;
+    position: absolute;
+    top: 40.2%;
+    right: 5.4%;
+    text-align: right;
+    font-size: 1.3vw;
+    line-height: 1.25;
+    font-weight: 400;
+    color: #888;
 }
-.hero .brand { overflow:visible; }
-.intro-section { padding:3vw 4.2vw 6vw; min-height:0; }
-.intro-en { font-size:4.95vw; line-height:1.38; letter-spacing:-.048em; font-weight:400; }
-.intro-en .slogan-line { display:block; cursor:auto; }
-.slogan-graphic { display:inline-block; vertical-align:middle; width:auto; height:1em; object-fit:contain; margin:0 .035em; }
-.slogan-globe { width:2.72em; height:auto; }
-.slogan-cursor { height:1.09em; }
-.slogan-asterisk { height:1.05em; }
-.slogan-circles { width:2.4em; height:auto; }
-.slogan-pixels { height:1.02em; }
-.slogan-eyes { width:2em; height:auto; }
+
+.hero .brand {
+    overflow: visible;
+}
+
+.intro-section {
+    padding: 9vw 4vw 9vw;
+    min-height: 0;
+}
+
+.intro-en {
+    font-size: 4.5vw;
+    line-height: 1.25;
+    letter-spacing: -.045em;
+    font-weight: 400;
+}
+
+.intro-en .slogan-line {
+    display: block;
+    cursor: auto;
+    white-space: nowrap;
+}
+
+.slogan-graphic {
+    display: inline-block;
+    vertical-align: middle;
+    width: auto;
+    height: 1em;
+    object-fit: contain;
+    margin: 0 .035em;
+}
+
+.slogan-globe {
+    width: 2.72em;
+    height: auto;
+}
+
+.slogan-cursor {
+    height: 1.09em;
+}
+
+.slogan-asterisk {
+    height: 1.05em;
+}
+
+.slogan-circles {
+    width: 2.4em;
+    height: auto;
+}
+
+.slogan-pixels {
+    height: 1.02em;
+}
+
+.tracking-eyes.slogan-eyes {
+    display: inline-block;
+    vertical-align: -.15em;
+    width: 2em;
+    height: 1em;
+    color: var(--blue);
+}
+
 .tools-skills {
-    width:max-content;
-    max-width:100%;
-    margin:7.6vw 0 0 auto;
-    display:flex;
-    flex-direction:column;
-    align-items:flex-end;
-    gap:5px;
-    font-size:2.3vw;
-    line-height:1.25;
-    letter-spacing:-.045em;
+    max-width: 100%;
+    margin: 8vw 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: .33vw;
+    font-size: 1.5vw;
+    line-height: 1.25;
+    letter-spacing: -.045em;
 }
-.tools-skills h3,.tools-skills p { position:relative; background:#eceefa; padding:1.5vw 1.7vw; font-size:inherit; font-weight:400; }
-.tools-skills h3 { border-left:2px solid var(--blue); padding:1.5vw 2.3vw; }
-.tools-skills h3::before { content:''; position:absolute; top:-.4em; left:calc(-.35em - 1px); width:.7em; height:.7em; border-radius:50%; background:var(--blue); }
-.tools-skills p:last-child { align-self:flex-start; border-right:2px solid var(--blue); }
-.projects-section { padding:5vw 4.2vw 10vw; scroll-margin-top:100px; }
-.section-heading { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:2.5vw; gap:20px; }
-.section-heading h2 { font-size:clamp(36px,5vw,84px); font-weight:400; letter-spacing:-.045em; line-height:1; }
-.section-heading>span { color:#888; font-size:clamp(10px,1.15vw,16px); }
-.project-list { display:flex; flex-direction:column; gap:4vw; }
-.project-row { display:grid; grid-template-columns:1fr 1fr; gap:2.3vw; align-items:start; }
-.project-image-link { display:block; overflow:hidden; }
-.project-image-link img { display:block; width:100%; height:auto; transition:transform .3s ease; }
-.project-image-link:hover img,.project-image-link:focus-visible img { transform:scale(1.015); }
-.project-info { display:block; width:fit-content; padding-top:2px; }
-.project-info p { font-size:clamp(11px,1.3vw,19px); color:#777; line-height:1.5; }
-.project-info h3 { margin-top:1vw; font-size:clamp(20px,2.1vw,32px); font-weight:400; line-height:1.2; }
-.project-info:hover h3 { color:var(--blue); }
-.project-row:nth-child(even) .project-image-link { grid-column:2; grid-row:1; }
-.project-row:nth-child(even) .project-info { grid-column:1; grid-row:1; justify-self:end; align-self:end; text-align:right; }
-.project-row-portrait .project-image-link { width:76%; }
-@media(min-width:1600px) {
-    .intro-section { min-height:0; }
-    .intro-en { font-size:4.95vw; }
+
+.tools-skills h3,
+.tools-skills p {
+    position: relative;
+    background: #eceefa;
+    padding: 1.2vw 2vw;
+    font-size: inherit;
+    font-weight: 400;
 }
+
+.tools-skills h3 {
+    border-left: 3px solid var(--blue);
+    color: #777;
+}
+
+.tools-skills h3::before {
+    content: '';
+    position: absolute;
+    top: -.45em;
+    left: calc(-.35em - 1.5px);
+    width: .7em;
+    height: .7em;
+    border-radius: 50%;
+    background: var(--blue);
+}
+
+.tools-skills p:last-child {
+    border-right: 3px solid var(--blue);
+}
+
+.projects-section {
+    padding: 6vw 4vw 3vw;
+    scroll-margin-top: 70px;
+}
+
+.project-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 5vw 3.2vw;
+    align-items: start;
+}
+
+.section-heading {
+    display: block;
+}
+
+.section-heading h2,
+.sub-heading h2,
+.contact-title,
+#about-title {
+    font-family: 'Bagel Fat One', sans-serif;
+    font-weight: 400;
+    color: var(--blue);
+}
+
+.section-heading h2 {
+    font-size: clamp(48px, 6.7vw, 160px);
+    line-height: 1;
+    letter-spacing: -.025em;
+}
+
+.section-heading p {
+    margin: 1.5vw 0 0 .3vw;
+    font-size: 1.3vw;
+    line-height: 1.25;
+    color: #888;
+    letter-spacing: -.04em;
+    font-weight: 300;
+}
+
+.project-row {
+    display: block;
+    min-width: 0;
+}
+
+.project-image-link {
+    display: block;
+    overflow: hidden;
+    border-radius: 1.5vw;
+    aspect-ratio: 1.47;
+}
+
+.project-image-link img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform .3s ease;
+}
+
+.project-image-link:hover img,
+.project-image-link:focus-visible img {
+    transform: scale(1.015);
+}
+
+.project-info {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 1.4vw 1.2vw 0;
+}
+
+.project-info h3 {
+    font-size: 1.5vw;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -.04em;
+}
+
+.project-info p {
+    font-size: 1vw;
+    color: #888;
+    white-space: nowrap;
+    letter-spacing: -.035em;
+}
+
+.project-info:hover h3 {
+    color: var(--blue);
+}
+
+.sub-heading {
+    text-align: right;
+    align-self: end;
+    padding-bottom: .1vw;
+    
+}
+
+.sub-heading h2 {
+    font-size: clamp(48px, 6.7vw, 160px);
+    line-height: 1.03;
+    letter-spacing: -.025em;
+}
+
+.sub-heading p {
+    margin: 1.5vw 0 0 .3vw;
+    font-size: 1.3vw;
+    line-height: 1.25;
+    color: #888;
+    letter-spacing: -.04em;
+    font-weight: 300;
+}
+
+.poster-strip {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    margin: 4.5vw -4vw 0 0;
+    padding: 0;
+    cursor: default;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: pan-y;
+    overscroll-behavior-x: contain;
+    scroll-behavior: auto;
+}
+
+.poster-track {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    width: max-content;
+    min-width: 100%;
+    padding-inline-end: 4vw;
+    gap: 1.4vw;
+}
+
+.poster-strip.is-dragging,.poster-strip.is-dragging .poster-card { cursor: grabbing; }
+
+.poster-strip::-webkit-scrollbar {
+    display: none;
+}
+
+.poster-track>.poster-card {
+    display: block;
+    flex: 0 0 auto;
+    cursor: default;
+    height: 29vw;
+    border-radius: 1.3vw;
+    overflow: hidden;
+}
+
+.poster-strip img {
+    display: block;
+    width: auto;
+    height: 100%;
+}
+
+.site-footer {
+    padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+}
+
+/* Reserve the original heading space so the blue footer starts at the same y. */
+.contact-title-slot {
+    position: relative;
+    height: calc(clamp(48px,7vw,160px) - 1.3vw);
+}
+
+.contact-title {
+    display: flex;
+    align-items: flex-end;
+    width: max-content;
+    gap: .25em;
+    margin: 0;
+    font-size: clamp(32px,4.8vw,112px);
+    line-height: 1;
+    letter-spacing: -.035em;
+    white-space: nowrap;
+    position: absolute;
+    left: 4.2vw;
+    bottom: 0;
+    z-index: 1;
+}
+
+/* Bagel Fat One cap/arrow ink bounds, rather than their padded line boxes,
+   meet the existing blue edge. Text stays native, selectable HTML. */
+.contact-title-text {
+    position: relative;
+    top: 0.09em;
+}
+
+.contact-title > .contact-arrow {
+    position: relative;
+    top: .25em;
+    font-size: 1.25em;
+    line-height: 1;
+    letter-spacing: 0;
+    rotate: 90deg;
+}
+
+.footer-body {
+    position: relative;
+    background: var(--blue);
+    min-height: 28.6vw;
+    padding: 9.6vw 5vw 3.1vw;
+    color: #e0e5ff;
+}
+
+.footer-contacts {
+    width: 27vw;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2vw;
+    font-size: 1.3vw;
+    line-height: 1.2;
+}
+
+.footer-contacts>div {
+    display: grid;
+    grid-template-columns: 15.3vw 1fr;
+}
+
+.footer-contacts dd a {
+    white-space: nowrap;
+}
+
+.footer-contacts>div:last-child a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.footer-bottom {
+    color: #e0e5ff9c;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    border: 0;
+    margin: 5.8vw 0 0;
+    padding: 0;
+    font-size: 1vw;
+    line-height: 1.4;
+    letter-spacing: 0;
+}
+
+.footer-logo {
+    display: block;
+    width: 7.2vw;
+    margin-bottom: 1vw;
+}
+
+.footer-logo .header-logo svg>g:first-child {
+    fill: #fff;
+}
+
+.footer-bottom>a {
+    margin-bottom: 0;
+    font-size: 1vw;
+}
+
 @media(max-width:767px) {
-    html { scroll-padding-top:84px; }
-    .site-header { height:76px; padding:0 5vw; gap:16px; }
-    .site-header>a { width:80px; min-width:64px; }
-    .site-header nav { gap:5vw; }
-    .site-header nav a { padding:10px 0; font-size:10px; }
-    .hero { height:96vw; min-height:360px; padding:48vw 5vw 0; }
-    .hero h1 { width:100%; transform:none; }
-    .hero-caption { top:32vw; right:5vw; font-size:clamp(10px,2.5vw,16px); }
-    .intro-section { padding:2vw 5vw 16vw; min-height:0; }
-    .intro-en { font-size:6.35vw; line-height:1.5; letter-spacing:-.045em; }
-    .intro-en .slogan-line { display:inline; }
-    .slogan-graphic { max-width:24vw; }
-    .tools-skills { font-size:clamp(12px,3.45vw,22px); margin-top:14vw; gap:4px; }
-    .tools-skills h3,.tools-skills p { padding:3vw 3.3vw; }
-    .projects-section { padding:5vw 5vw 22vw; scroll-margin-top:84px; }
-    .section-heading { align-items:flex-end; margin-bottom:8vw; }
-    .section-heading h2 { font-size:9vw; }
-    .section-heading>span { font-size:8px; text-align:right; padding-bottom:3px; }
-    .project-list { gap:15vw; }
-    .project-row { display:flex; flex-direction:column; gap:18px; }
-    .project-image-link { width:100%; }
-    .project-row:nth-child(even) .project-info { align-self:flex-start; text-align:left; }
-    .project-info p { font-size:10px; }
-    .project-info h3 { margin-top:7px; font-size:22px; }
-    .project-row-portrait .project-image-link { width:82%; }
+    html {
+        scroll-padding-top: 88px;
+    }
+
+    .site-header {
+        top: 24px;
+        gap: 22px;
+    }
+
+    .site-header>a {
+        width: 80px;
+        min-width: 0;
+    }
+
+    .site-header nav a {
+        padding: 10px 18px;
+        font-size: 11px;
+    }
+
+    .hero {
+        height: 80svh;
+        min-height: 390px;
+    }
+
+    .hero h1 {
+        width: 94%;
+        left: 3%;
+        bottom: 8%;
+    }
+
+    .hero-caption {
+        top: 44%;
+        right: 5%;
+        font-size: 12px;
+    }
+
+    .intro-section {
+        padding: 12vw 5vw;
+    }
+
+    .intro-en {
+        font-size: 5.3vw;
+        line-height: 1.5;
+    }
+
+    .intro-en .slogan-line {
+        display: inline;
+        white-space: normal;
+    }
+
+    .tools-skills {
+        font-size: clamp(10px, 2.8vw, 20px);
+        margin-top: 15vw;
+        gap: 4px;
+        letter-spacing: -.05em;
+    }
+
+    .tools-skills h3,
+    .tools-skills p {
+        padding: 3vw 2.5vw;
+    }
+
+    .tools-skills h3,
+    .tools-skills p:last-child {
+        border-width: 2px;
+    }
+
+    .projects-section {
+        padding: 8vw 5vw 10vw;
+    }
+
+    .project-list {
+        grid-template-columns: 1fr;
+        gap: 8vw;
+    }
+
+    .section-heading h2,
+    .sub-heading h2 {
+        font-size: clamp(32px, 11vw, 84px);
+    }
+
+    .section-heading p {
+        font-size: 4vw;
+        margin: 3vw 0;
+    }
+
+    .project-image-link {
+        border-radius: 3vw;
+    }
+
+    .project-info {
+        padding: 3vw 1vw 0;
+    }
+
+    .project-info h3 {
+        font-size: 4vw;
+    }
+
+    .project-info p {
+        font-size: 3vw;
+    }
+
+    .sub-heading {
+        margin-top: 7vw;
+    }
+
+    .sub-heading p {
+        font-size: 3.4vw;
+        margin-top: 3vw;
+    }
+
+    .poster-strip {
+        margin: 6vw -5vw 0 0;
+        padding: 0;
+    }
+
+    .poster-track { gap: 3vw; padding-inline-end: 5vw; }
+
+    .poster-track>.poster-card {
+        height: 59vw;
+        border-radius: 2.5vw;
+    }
+
+    
+    .contact-title-slot {
+        height: calc(max(clamp(30px,10.5vw,80px),clamp(48px,7vw,160px)) - 1.4vw);
+    }
+
+    .contact-title {
+        font-size: clamp(24px,8.6vw,52px);
+        gap: .25em;
+        left: 5vw;
+    }
+
+    .contact-hand {
+        width: 9vw;
+        height: 10vw;
+    }
+
+    .footer-body {
+        min-height: 270px;
+        padding: 46px 5vw 24px;
+    }
+
+    .footer-contacts {
+        width: max-content;
+        max-width: 100%;
+        gap: 18px;
+        font-size: 12px;
+    }
+
+    .footer-contacts>div {
+        grid-template-columns: 75px 1fr;
+    }
+
+    .footer-bottom {
+        margin-top: 65px;
+        font-size: 9px;
+        gap: 12px;
+    }
+
+    .footer-logo {
+        width: 66px;
+        margin-bottom: 12px;
+    }
+
+    .footer-bottom>a {
+        font-size: 9px;
+        white-space: nowrap;
+    }
 }
-@media(prefers-reduced-motion:reduce) { .project-image-link img { transition:none; } }
+
+@media(prefers-reduced-motion:reduce) {
+    .project-image-link img {
+        transition: none;
+    }
+}

@@ -7,10 +7,13 @@ import Hero from './components/Hero.jsx'
 import Projects from './components/Projects.jsx'
 import ProjectDetail from './components/ProjectDetail.jsx'
 import usePortfolioNavigation from './hooks/usePortfolioNavigation.js'
+import useHeroOnboarding from './hooks/useHeroOnboarding.js'
 import './styles/portfolio.css'
+import './styles/hero-onboarding.css'
 
 export default function App() {
   const { project, navigateProject, backToPortfolio } = usePortfolioNavigation()
+  const onboarding = useHeroOnboarding(Boolean(project))
   useEffect(() => {
     if (!window.matchMedia('(pointer: fine)').matches) return
     let frame = 0
@@ -26,7 +29,14 @@ export default function App() {
     return () => { window.removeEventListener('pointermove', follow); cancelAnimationFrame(frame) }
   }, [])
   return <>
-    <div inert={Boolean(project)} aria-hidden={project ? true : undefined} className="portfolio"><Header /><main><Hero /><Intro /><Projects onNavigate={navigateProject} /><About /></main><Footer /></div>
-    {project && <ProjectDetail project={project} onBack={backToPortfolio} />}
+    <div inert={Boolean(project)} aria-hidden={project ? true : undefined} className="portfolio" data-onboarding={onboarding.phase}>
+      <Header disabled={onboarding.active} onRevealEnd={onboarding.onRevealEnd} />
+      <main>
+        <Hero ready={onboarding.heroReady} onLettersLanded={onboarding.onLettersLanded} />
+        <div className="after-hero" inert={onboarding.active} aria-hidden={onboarding.active ? true : undefined}><Intro /><Projects onNavigate={navigateProject} /><About /></div>
+      </main>
+      <div className="after-hero" inert={onboarding.active} aria-hidden={onboarding.active ? true : undefined}><Footer /></div>
+    </div>
+    {project && <ProjectDetail project={project} onBack={backToPortfolio} onNavigate={navigateProject} />}
   </>
 }

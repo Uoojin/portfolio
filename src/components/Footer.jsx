@@ -1,9 +1,17 @@
-import Eyes from './Eyes.jsx'
-// Set real social profile URLs here when they are available.
-const socialLinks = [{ label: 'EMAIL', href: 'mailto:u.ooojini@gmail.com' }, { label: 'INSTAGRAM', href: '' }, { label: 'GITHUB', href: '' }]
+import HeaderLogo from './HeaderLogo.jsx'
+
 export default function Footer() {
   return <footer id="contact" className="site-footer">
-    <div className="footer-main"><a className="connect-title" href="mailto:u.ooojini@gmail.com">LET’S<br />CONNECT<span className="connect-dot">.</span></a><div className="footer-character" aria-hidden="true"><span className="thanks">Thanks<br />for looking!</span><Eyes /><span className="footer-hands">⌒<span>⌒</span></span></div><nav className="footer-links" aria-label="Contact links">{socialLinks.map(link => link.href ? <a key={link.label} href={link.href}>{link.label} ↗</a> : <span className="social-pending" key={link.label} title="프로필 링크 준비 중">{link.label} <small>준비 중</small></span>)}<a href="#hero">BACK TO TOP ↑</a></nav></div>
-    <div className="footer-bottom"><p>© {new Date().getFullYear()} UOOJIN. All rights reserved.</p><span>SEE YOU AROUND ↗</span></div>
+    <div className="contact-title-slot"><h2 className="contact-title"><span className="contact-title-text">CONTACT ME</span><span className="contact-arrow" aria-hidden="true">↗︎</span></h2></div>
+    <div className="footer-body">
+      <dl className="footer-contacts">
+        <div><dt>EMAIL</dt><dd><a href="mailto:u.ooojin@gmail.com">u.ooojin@gmail.com</a></dd></div>
+        <div><dt>GITHUB</dt><dd><a href="https://github.com/Uoojin" target="_blank" rel="noopener noreferrer">https://github.com/</a></dd></div>
+      </dl>
+      <div className="footer-bottom">
+        <div><a className="footer-logo" href="#hero" aria-label="UOOJIN home"><HeaderLogo /></a><p>Copyright © 2026 Uoojin All rights reserved</p></div>
+        <a href="#hero">BACK TO TOP ↑</a>
+      </div>
+    </div>
   </footer>
 }

@@ -1,8 +1,9 @@
 import { useEffect } from 'react'
 
 // All tracking is calculated in SVG coordinates, independent of displayed size.
-export default function useSvgPupils(rootRef, scopeRef) {
+export default function useSvgPupils(rootRef, scopeRef, enabled = true) {
   useEffect(() => {
+    if (!enabled) return
     const root = rootRef.current
     const svg = root?.matches('svg') ? root : root?.querySelector('svg')
     if (!svg) return
@@ -48,5 +49,5 @@ export default function useSvgPupils(rootRef, scopeRef) {
       window.removeEventListener('blur', reset)
       document.removeEventListener('visibilitychange', visibility)
     }
-  }, [rootRef, scopeRef])
+  }, [rootRef, scopeRef, enabled])
 }
