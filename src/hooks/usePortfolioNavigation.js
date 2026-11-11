@@ -11,10 +11,12 @@ export default function usePortfolioNavigation() {
   useEffect(() => {
     const previous = window.history.scrollRestoration
     window.history.scrollRestoration = 'manual'
-    const handlePopState = () => setLocation({
-      pathname: window.location.pathname,
-      scrollY: findProject(window.location.pathname) ? 0 : (window.history.state?.portfolioScrollY ?? 0),
-    })
+    const handlePopState = () => {
+      const { pathname, hash } = window.location
+      const anchor = document.getElementById(hash.slice(1))
+      const anchorY = anchor ? anchor.getBoundingClientRect().top + window.scrollY : 0
+      setLocation({ pathname, scrollY: window.history.state?.portfolioScrollY ?? anchorY })
+    }
     window.addEventListener('popstate', handlePopState)
     return () => {
       window.history.scrollRestoration = previous
@@ -23,7 +25,12 @@ export default function usePortfolioNavigation() {
   }, [])
 
   useLayoutEffect(() => {
-    if (!project && location.scrollY !== null) window.scrollTo({ top: location.scrollY, behavior: 'instant' })
+    if (project) return
+    if (location.scrollY !== null) {
+      window.scrollTo({ top: location.scrollY, behavior: 'instant' })
+    } else {
+      document.getElementById(window.location.hash.slice(1))?.scrollIntoView({ behavior: 'instant' })
+    }
   }, [location, project])
 
   const navigateProject = (event, id) => {

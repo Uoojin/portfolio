@@ -1,42 +1,42 @@
-import { useEffect } from 'react'
-import About from './components/About.jsx'
-import Intro from './components/Intro.jsx'
+import { useRef } from 'react'
+import About, { AboutDocuments } from './components/About.jsx'
+import CustomCursor from './components/CustomCursor.jsx'
 import Footer from './components/Footer.jsx'
 import Header from './components/Header.jsx'
 import Hero from './components/Hero.jsx'
 import Projects from './components/Projects.jsx'
 import ProjectDetail from './components/ProjectDetail.jsx'
 import usePortfolioNavigation from './hooks/usePortfolioNavigation.js'
-import useHeroOnboarding from './hooks/useHeroOnboarding.js'
+import usePageMotion from './hooks/usePageMotion.js'
+import useReveal from './hooks/useReveal.js'
 import './styles/portfolio.css'
-import './styles/hero-onboarding.css'
 
 export default function App() {
   const { project, navigateProject, backToPortfolio } = usePortfolioNavigation()
-  const onboarding = useHeroOnboarding(Boolean(project))
-  useEffect(() => {
-    if (!window.matchMedia('(pointer: fine)').matches) return
-    let frame = 0
-    const follow = (event) => {
-      cancelAnimationFrame(frame)
-      frame = requestAnimationFrame(() => document.querySelectorAll('.eye i').forEach(pupil => {
-        const r = pupil.parentElement.getBoundingClientRect()
-        const angle = Math.atan2(event.clientY - r.top - r.height / 2, event.clientX - r.left - r.width / 2)
-        pupil.style.transform = `translate(${Math.cos(angle) * r.width * .14}px, ${Math.sin(angle) * r.height * .14}px)`
-      }))
+  const onSection = usePageMotion(Boolean(project))
+  const pageRef = useRef(null)
+  const opener = useRef(null)
+  useReveal(pageRef)
+
+  const openProject = (event, id) => {
+    if (event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
+      opener.current = event.currentTarget
     }
-    window.addEventListener('pointermove', follow, { passive: true })
-    return () => { window.removeEventListener('pointermove', follow); cancelAnimationFrame(frame) }
-  }, [])
+    navigateProject(event, id)
+  }
+
   return <>
-    <div inert={Boolean(project)} aria-hidden={project ? true : undefined} className="portfolio" data-onboarding={onboarding.phase}>
-      <Header disabled={onboarding.active} onRevealEnd={onboarding.onRevealEnd} />
+    <div className="portfolio" ref={pageRef}>
+      <Header onSection={onSection} />
       <main>
-        <Hero ready={onboarding.heroReady} onLettersLanded={onboarding.onLettersLanded} />
-        <div className="after-hero" inert={onboarding.active} aria-hidden={onboarding.active ? true : undefined}><Intro /><Projects onNavigate={navigateProject} /><About /></div>
+        <Hero onSection={onSection} paused={Boolean(project)} />
+        <About />
+        <AboutDocuments />
+        <Projects onNavigate={openProject} />
       </main>
-      <div className="after-hero" inert={onboarding.active} aria-hidden={onboarding.active ? true : undefined}><Footer /></div>
+      <Footer onSection={onSection} />
+      <CustomCursor />
     </div>
-    {project && <ProjectDetail project={project} onBack={backToPortfolio} onNavigate={navigateProject} />}
+    {project && <ProjectDetail projectId={project.id} opener={opener} onBack={backToPortfolio} onNavigate={navigateProject} />}
   </>
 }
