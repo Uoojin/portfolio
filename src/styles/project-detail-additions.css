@@ -1,0 +1,152 @@
+.detail-additions {
+  --addition-accent: #352efb;
+  container-type: inline-size;
+}
+
+.detail-additions[data-project="notomato"] {
+  --addition-accent: var(--ink);
+  --addition-rule: #ffbfdc;
+}
+
+.detail-additions-section {
+  padding: 10.7cqi 4.3cqi 0 3cqi;
+}
+
+.detail-additions-section:last-child {
+  padding-bottom: 5.2cqi;
+}
+
+.detail-additions-intro {
+  display: grid;
+  grid-template-columns: 1fr 2.05fr;
+  gap: 1.6cqi;
+}
+
+.detail-additions :is(h2, h3, h4) {
+  margin: 0;
+  font-weight: 400;
+  line-height: 1.3;
+  font-size: clamp(14px, 1.65cqi, 22px);
+}
+
+.detail-additions p {
+  font-size: clamp(14px, 1.73cqi, 23px);
+  line-height: 1.75;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.detail-additions .detail-additions-title {
+  font-size: clamp(17px, 2cqi, 27px);
+  line-height: 1.3;
+}
+
+.detail-additions .detail-additions-lead {
+  margin-block: .65em .35em;
+  color: var(--addition-accent);
+}
+
+.detail-additions-grid {
+  display: grid;
+  gap: clamp(16px, 2.8cqi, 42px);
+  margin: 5.2cqi 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.detail-additions-grid > * { min-width: 0; }
+
+.detail-additions-grid > :is(li, div):not(.detail-additions-media) {
+  border-top: 1px solid var(--addition-rule, #d7d7d7);
+  padding-top: max(9px, 1.4cqi);
+}
+
+.detail-additions-grid :is(h3, h4) + p,
+.detail-additions-media + p {
+  margin-top: .55em;
+}
+
+.detail-additions-experiences {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.detail-additions-experiences > li { grid-column: span 2; }
+.detail-additions-experiences > [data-featured] { grid-column: span 3; }
+.detail-additions-experiences .detail-additions-madi { grid-column: span 3; }
+.detail-additions-experiences .detail-additions-sai { grid-column: span 3; }
+.detail-additions-experiences .detail-additions-iyagi { grid-column: 2 / span 4; }
+.detail-additions[data-project="notomato"] .detail-additions-experiences > [data-featured] { grid-column: span 4; }
+.detail-additions[data-project="notomato"] .detail-additions-experiences > li:last-child { grid-column: 2 / span 4; }
+
+.detail-additions-experiences h3,
+.detail-additions-comparison h3 {
+  color: var(--addition-accent);
+}
+
+.detail-additions-comparison { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.detail-additions-triplet { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.detail-additions-identity { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.detail-additions-identity:has(.detail-additions-media) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+.detail-additions-body {
+  margin-top: 5.2cqi;
+}
+
+.detail-additions-body:empty,
+.detail-additions-body .detail-additions-comparison:empty { display: none; }
+
+.detail-additions-team,
+.detail-additions-award {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .3em 1em;
+}
+
+.detail-additions-team p,
+.detail-additions-award p {
+  font-size: clamp(12px, 1.35cqi, 18px);
+}
+
+.detail-additions-contribution { margin-top: 1.4cqi; }
+
+.detail-additions-media {
+  display: grid;
+  grid-template-columns: repeat(var(--media-columns, 1), minmax(0, 1fr));
+  align-items: start;
+  gap: 1.4cqi;
+  margin-block: max(8px, 1.4cqi);
+}
+
+.detail-additions-media[data-count="2"] { --media-columns: 2; }
+.detail-additions-media[data-count="3"] { --media-columns: 3; }
+
+.detail-additions-media :is(img, video) {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@container (max-width: 550px) {
+  .detail-additions-intro,
+  .detail-additions-triplet,
+  .detail-additions-comparison {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .detail-additions-intro { gap: 12px; }
+  .detail-additions-identity { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .detail-additions .detail-additions-experiences > li:nth-child(n) { grid-column: 1 / -1; }
+  .detail-additions-media[data-count] { --media-columns: 1; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .detail-additions[data-motion] [data-addition-reveal] {
+    transition: opacity .55s var(--ease), transform .55s var(--ease);
+  }
+
+  .detail-additions[data-motion] [data-addition-reveal]:not([data-revealed], :focus-within) {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}

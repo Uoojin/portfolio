@@ -74,6 +74,7 @@
   padding-top: 26px;
   font-size: clamp(12px, .88vw, 20px);
 }
+.detail-role { margin-top: .45em; }
 .detail-tools {
   display: flex;
   flex-wrap: wrap;
@@ -98,6 +99,7 @@
 .detail-article { padding-block: var(--detail-top) var(--detail-bottom); }
 .detail-cover[data-artwork] { aspect-ratio: auto; background: transparent; }
 .detail-cover[data-artwork] img { height: auto; }
+.detail-cover[data-fit="contain"] img { object-fit: contain; }
 .detail-index {
   align-self: end;
   display: grid;

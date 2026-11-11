@@ -13,10 +13,10 @@ export default function Projects({ onNavigate }) {
       <p>Selected projects, collected over time.</p>
     </div>
     <ul className="works-grid">
-      {gallery.map(({ id, name, label, cover }) => <li key={id}>
+      {gallery.map(({ id, name, label, cover, thumbnail = cover }) => <li key={id}>
         <a href={projectPath(id)} onClick={event => onNavigate(event, id)} className="work-link">
           <div className="work-thumbnail" data-project-thumbnail={id}>
-            {cover && <img src={cover} alt="" width="1200" height="900" loading="lazy" decoding="async" />}
+            {thumbnail && <img src={thumbnail} alt="" width="1200" height="900" loading="lazy" decoding="async" />}
           </div>
           <div className="work-caption"><h3>{name}</h3><p>{label}</p></div>
         </a>

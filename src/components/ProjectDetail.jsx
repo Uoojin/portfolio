@@ -5,10 +5,13 @@ import { projectContent } from '../data/projectContent.js'
 import flyProject from '../lib/projectTransition.js'
 import CustomCursor from './CustomCursor.jsx'
 import MonoLogContent from './MonoLogContent.jsx'
+import NotomatoContent from './NotomatoContent.jsx'
+import ShwimpyoContent from './ShwimpyoContent.jsx'
+import { MonoLogAdditions, NotomatoAdditions } from './ProjectDetailAdditions.jsx'
 import '../styles/project-detail.css'
 
 function DetailInfo({ content }) {
-  const { title, url, subtitle, description, media, subject, target, type, tools = [], award } = content
+  const { title, url, subtitle, description, media, subject, target, type, role, tools = [], award } = content
   const facts = [['MEDIA', media], ['SUBJECT', subject], ['TARGET', target]].filter(([, value]) => value)
 
   return <aside className="detail-info">
@@ -23,8 +26,9 @@ function DetailInfo({ content }) {
     {facts.length > 0 && <dl className="detail-meta">
       {facts.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}
     </dl>}
-    {(type || tools.length > 0 || award) && <div className="detail-credits">
+    {(type || role || tools.length > 0 || award) && <div className="detail-credits">
       {type && <p>{type}</p>}
+      {role && <p className="detail-role">- {role}</p>}
       {tools.length > 0 && <ul className="detail-tools" aria-label="사용 툴">
         {tools.map(tool => <li key={tool}>{tool}</li>)}
       </ul>}
@@ -43,7 +47,7 @@ export default function ProjectDetail({ projectId, opener, onBack, onNavigate })
   const originalOpener = useRef(null)
   const opened = useRef(false)
   const content = projectContent[projectId]
-  const { title, heroImage, heroAlt, heroWidth, heroHeight, artwork, detailSections } = content
+  const { title, heroImage, heroAlt, heroWidth, heroHeight, heroFit, artwork, detailSections } = content
 
   useLayoutEffect(() => {
     const dialog = dialogRef.current
@@ -113,10 +117,18 @@ export default function ProjectDetail({ projectId, opener, onBack, onNavigate })
     <DetailInfo content={content} />
     <div className="detail-scroll" ref={viewportRef} tabIndex="0" aria-label="프로젝트 상세 콘텐츠">
       <article key={projectId} className="detail-article">
-        <figure className="detail-cover" ref={coverRef} data-artwork={artwork || undefined}>
+        <figure className="detail-cover" ref={coverRef} data-artwork={artwork || undefined} data-fit={heroFit}>
           {heroImage && <img src={heroImage} alt={heroAlt || title} width={heroWidth} height={heroHeight} decoding="async" />}
         </figure>
-        {projectId === 'ProjectName' && <MonoLogContent scrollRef={viewportRef} />}
+        {projectId === 'ProjectName' && <>
+          <MonoLogContent scrollRef={viewportRef} />
+          <MonoLogAdditions scrollRef={viewportRef} award={content.award} />
+        </>}
+        {projectId === 'project-02' && <>
+          <NotomatoContent />
+          <NotomatoAdditions scrollRef={viewportRef} />
+        </>}
+        {projectId === 'project-03' && <ShwimpyoContent scrollRef={viewportRef} />}
         {detailSections.map(section => <section className="detail-section" key={section.id}>
           {section.title && <h2>{section.title}</h2>}
           {section.text && <p>{section.text}</p>}

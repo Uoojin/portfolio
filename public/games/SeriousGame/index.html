@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쉼표拘束</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="game">
+            <img class="main-img" src="img/main.png" alt="방 배경">
+
+            <div class="room">
+                <div class="object door"></div>
+                <div class="object desk"></div>
+                <div class="object bookcase"></div>
+                <div class="object clock"></div>
+                <div class="object calendar"></div>
+                <div class="object window"></div>
+                <div class="object bed"></div>
+            </div>
+
+            <div class="calendar-label">
+                <span class="calendar-date">xx월 xx일</span>
+                <span class="date-label">D+1</span>
+            </div>
+
+            <div class="clock-face">
+                <span class="hour-hand"></span>
+                <span class="minute-hand"></span>
+            </div>
+
+            <div class="blackout hidden"></div>
+            <div class="sleep-text hidden">Zzz...</div>
+
+            <div class="desk-view">
+            
+                <div class="object laptop"></div>
+            </div>
+        </div>
+
+        <div class="notice-toast"></div>
+
+        <button class="back hidden" type="button">방으로</button>
+
+        <div class="message-box">
+            <p class="message-text"></p>
+            <button class="message-next hidden" type="button">▼</button>
+        </div>
+
+        <div class="choice-box hidden">
+            <div class="choices"></div>
+        </div>
+
+        <div class="chapter hidden">
+            <div class="chapter-inner">
+                <p class="chapter-day">DAY 1</p>
+                <p class="chapter-date">3월 2일</p>
+            </div>
+        </div>
+
+        <div class="work hidden">
+            <div class="work-box">
+                <div class="work-screen"></div>
+                <p class="work-text"></p>
+            </div>
+        </div>
+
+        <div class="report hidden">
+            <div class="report-window">
+                <p class="report-title">오늘의 기록</p>
+                <div class="report-body"></div>
+                <button class="next" type="button">▼</button>
+            </div>
+        </div>
+
+        <div class="ending hidden">
+            <div class="ending-panel">
+                <p class="ending-text"></p>
+                <button class="ending-restart hidden" type="button">처음으로 돌아가기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
