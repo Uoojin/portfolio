@@ -1,5 +1,4 @@
 import { projects } from './projects.js'
-import shwimpyoRoom from '../assets/object/works/shwimpyo/main.png'
 
 const newDetailsById = {
   ProjectName: {
@@ -13,14 +12,21 @@ const newDetailsById = {
     award: '전공 연합 PT 프론트엔드 개발 부문 우수작',
   },
   'lets-sync': {
+    title: 'LET’S SYNC!',
+    url: 'https://www.digital-media.kr/degreeshow/2026/',
     subtitle: '디지털미디어디자인 졸업전시 브랜딩',
-    description: '타이포그래피와 그래픽을 연결한 웹 및 브랜딩 프로젝트입니다.',
+    description: '타이포그래피와 그래픽을 인터랙티브한 웹 경험으로 구현한 졸업전시 웹사이트입니다.',
     media: 'WEB · 전시 · 브랜딩',
     subject: '문화/예술',
     target: '일반 대중',
-    type: 'PROJECT',
+    type: 'Team Project',
+    role: 'Front-end Development',
+    tools: ['React', 'JavaScript', 'CSS', 'GSAP', 'Motion'],
+    award: '제33회 계원조형예술제 학과 최우수상',
   },
   'project-02': {
+    heroWidth: 2364,
+    heroHeight: 1760,
     subtitle: 'Personalized Dietary\nCare for Everyday Life',
     description: 'NOTOMATO is a personalized dietary management platform designed for people with medical dietary needs. By integrating health information, food analysis, meal tracking, and medication management, it helps users make safer food choices and manage their daily diets with greater ease and confidence.',
     media: 'UIUX · Mobile · WEB',
@@ -32,10 +38,8 @@ const newDetailsById = {
   },
   'project-03': {
     url: 'https://github.com/Uoojin/Shimpyo',
-    heroImage: shwimpyoRoom,
-    heroAlt: '책상과 침대가 있는 쉼표 게임의 픽셀 원룸',
-    heroWidth: 1672,
-    heroHeight: 941,
+    heroWidth: 2364,
+    heroHeight: 1760,
     artwork: true,
     subtitle: 'An Involuntary Pause\nin an Endless Pursuit',
     description: 'SHWIMPYO is a serious game that explores the struggles of young job seekers facing ever-rising social expectations. Through repeated choices and everyday actions, players experience how personal growth is overshadowed by increasing demands, eventually leading to an involuntary pause.',
@@ -70,10 +74,9 @@ const newDetailsById = {
   },
 }
 
-export const projectContent = Object.fromEntries(projects.map(project => [project.id, {
-  title: project.name,
-  url: project.url,
-  heroImage: project.cover,
+export const projectContent = Object.fromEntries(projects.map(({ id, name, url, cover, thumbnail = cover }) => [id, {
+  title: name,
+  url,
   heroWidth: 1200,
   heroHeight: 900,
   subtitle: '',
@@ -82,5 +85,6 @@ export const projectContent = Object.fromEntries(projects.map(project => [projec
   subject: '',
   target: '',
   detailSections: [],
-  ...newDetailsById[project.id],
+  ...newDetailsById[id],
+  heroImage: thumbnail,
 }]))

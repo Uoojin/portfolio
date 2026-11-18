@@ -21,8 +21,8 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  --dot-color: #e0e0e0;
-  background: var(--dot-pattern) var(--dot-offset) / var(--dot-step) var(--dot-step);
+  background: radial-gradient(circle, #ededed var(--dot-radius), transparent calc(var(--dot-radius) + .45px))
+    var(--dot-offset) / var(--dot-step) var(--dot-step);
   animation: detail-dots-in .42s ease both;
 }
 .project-detail[open] {

@@ -1,0 +1,169 @@
+.lets-sync-content {
+  --sync-line: rgb(9 9 9 / 22%);
+  --sync-gap: clamp(12px, 2.2cqi, 30px);
+  container-type: inline-size;
+  line-height: 1.65;
+  word-break: keep-all;
+}
+
+.lets-sync-hero > div {
+  padding: clamp(14px, 2.4cqi, 32px) 3cqi 0;
+}
+
+.lets-sync-hero h2 {
+  font-size: clamp(24px, 4cqi, 54px);
+  line-height: 1.3;
+}
+
+.lets-sync-hero p {
+  font-size: clamp(16px, 2.2cqi, 30px);
+}
+
+.lets-sync-section {
+  padding: clamp(44px, 9cqi, 130px) 3cqi 0;
+}
+
+.lets-sync-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2.15fr);
+  gap: var(--sync-gap);
+  margin-bottom: clamp(20px, 3.7cqi, 50px);
+  border-top: 1px solid var(--sync-line);
+  padding-top: clamp(12px, 1.8cqi, 24px);
+}
+
+.lets-sync-intro h2 {
+  font-size: clamp(14px, 1.65cqi, 22px);
+}
+
+.lets-sync-intro h3 {
+  font-size: clamp(20px, 3.05cqi, 42px);
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+.lets-sync-intro p {
+  margin-top: .6em;
+  max-width: 50ch;
+  font-size: clamp(14px, 1.73cqi, 23px);
+  line-height: 1.75;
+}
+
+.lets-sync-intro .lets-sync-lead {
+  font-size: clamp(15px, 1.9cqi, 26px);
+}
+
+.lets-sync-media {
+  min-width: 0;
+}
+
+.lets-sync-media :is(img, video) {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.lets-sync-media video {
+  aspect-ratio: 8 / 5;
+  background: #171717;
+}
+
+.lets-sync-media figcaption {
+  margin-top: .55em;
+  color: #535353;
+  font-size: clamp(12px, 1.45cqi, 18px);
+}
+
+.lets-sync-motion-layout,
+.lets-sync-archive-stills,
+.lets-sync-archive-flow,
+.lets-sync-guestbook-stills,
+.lets-sync-final-stills {
+  display: grid;
+  gap: var(--sync-gap);
+  align-items: start;
+}
+
+.lets-sync-motion-layout {
+  grid-template-columns: minmax(0, 1fr) minmax(0, .55fr);
+}
+
+.lets-sync-motion-layout > :last-child {
+  align-self: end;
+}
+
+.lets-sync-archive-stills,
+.lets-sync-guestbook-stills {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.lets-sync-archive-flow {
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, .85fr);
+  margin-top: calc(1.5 * var(--sync-gap));
+}
+
+.lets-sync-feature {
+  display: grid;
+  gap: var(--sync-gap);
+}
+
+.lets-sync-feature h4,
+.lets-sync-award h4 {
+  margin: 0;
+  font-weight: 400;
+  font-size: clamp(16px, 2cqi, 28px);
+}
+
+.lets-sync-feature p {
+  font-size: clamp(14px, 1.65cqi, 21px);
+}
+
+.lets-sync-feature > header p + p {
+  margin-top: .25em;
+}
+
+.lets-sync-drawing {
+  grid-template-columns: minmax(0, .6fr) minmax(0, 1.6fr);
+  border-top: 1px solid var(--sync-line);
+  margin-top: clamp(26px, 5.5cqi, 72px);
+  padding-top: var(--sync-gap);
+}
+
+.lets-sync-final-stills {
+  grid-template-columns: minmax(0, 2.3fr) minmax(0, .8fr);
+}
+
+.lets-sync-award {
+  margin-top: clamp(24px, 4cqi, 58px);
+  padding-top: var(--sync-gap);
+  border-top: 1px solid var(--sync-line);
+}
+
+.lets-sync-award p {
+  margin-top: .3em;
+  font-size: clamp(14px, 1.65cqi, 21px);
+}
+
+.lets-sync-external {
+  display: inline-block;
+  margin-top: clamp(16px, 3cqi, 42px);
+  font-size: clamp(16px, 1.59vw, 28px);
+}
+
+.lets-sync-external:hover {
+  text-decoration: underline;
+}
+
+@container (max-width: 520px) {
+  .lets-sync-intro,
+  .lets-sync-motion-layout,
+  .lets-sync-archive-flow,
+  .lets-sync-drawing {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .lets-sync-motion-layout > :last-child {
+    width: 80%;
+    justify-self: end;
+  }
+}

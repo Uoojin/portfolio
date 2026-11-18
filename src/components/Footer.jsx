@@ -1,10 +1,10 @@
 import { email, socialLinks } from '../data/contact.js'
 
 export default function Footer({ onSection }) {
-  return <footer id="contact" className="site-footer" lang="en">
+  return <footer className="site-footer" lang="en">
     <nav aria-label="Footer navigation">
-      <a href="#about" onClick={onSection}>ABOUT</a>
       <a href="#projects" onClick={onSection}>WORKS</a>
+      <a href="#contact" onClick={onSection}>CONTACT</a>
     </nav>
     <div className="footer-contact">
       <a href={`mailto:${email}`}>{email}</a>

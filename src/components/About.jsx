@@ -48,8 +48,8 @@ function ContactPoster() {
 }
 
 export default function About() {
-  return <section id="about" className="about" aria-labelledby="about-title">
-    <h2 id="about-title" lang="en">PERSONAL NOTES</h2>
+  return <section id="contact" className="about" aria-labelledby="contact-title">
+    <h2 id="contact-title" lang="en">CONTACT</h2>
     <div className="about-layout">
       <div className="poster-position" data-reveal><ContactPoster /></div>
       <div className="about-copy" lang="en" data-reveal>

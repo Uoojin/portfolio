@@ -161,7 +161,7 @@ export default function Hero({ onSection, paused }) {
       </div>
     </div>
     <HeroCopy copy={words[active].copy} count={count} />
-    <a className="scroll-indicator" href="#about" onClick={onSection} aria-label="Scroll to About">
+    <a className="scroll-indicator" href="#projects" onClick={onSection} aria-label="Scroll to Works">
       <span aria-hidden="true" />
     </a>
   </section>

@@ -30,9 +30,9 @@ export default function App() {
       <Header onSection={onSection} />
       <main>
         <Hero onSection={onSection} paused={Boolean(project)} />
+        <Projects onNavigate={openProject} />
         <About />
         <AboutDocuments />
-        <Projects onNavigate={openProject} />
       </main>
       <Footer onSection={onSection} />
       <CustomCursor />

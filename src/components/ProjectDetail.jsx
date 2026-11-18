@@ -4,10 +4,10 @@ import { projectPath } from '../data/projects.js'
 import { projectContent } from '../data/projectContent.js'
 import flyProject from '../lib/projectTransition.js'
 import CustomCursor from './CustomCursor.jsx'
+import LetsSyncContent from './LetsSyncContent.jsx'
 import MonoLogContent from './MonoLogContent.jsx'
 import NotomatoContent from './NotomatoContent.jsx'
 import ShwimpyoContent from './ShwimpyoContent.jsx'
-import { MonoLogAdditions, NotomatoAdditions } from './ProjectDetailAdditions.jsx'
 import '../styles/project-detail.css'
 
 function DetailInfo({ content }) {
@@ -47,7 +47,13 @@ export default function ProjectDetail({ projectId, opener, onBack, onNavigate })
   const originalOpener = useRef(null)
   const opened = useRef(false)
   const content = projectContent[projectId]
-  const { title, heroImage, heroAlt, heroWidth, heroHeight, heroFit, artwork, detailSections } = content
+  const { title, heroImage, heroWidth, heroHeight, heroFit, artwork, detailSections } = content
+  const isNotomato = projectId === 'project-02'
+  const isLetsSync = projectId === 'lets-sync'
+  const cover = <figure className="detail-cover" ref={coverRef} data-artwork={artwork || undefined}
+    data-fit={heroFit}>
+    {heroImage && <img src={heroImage} alt={title} width={heroWidth} height={heroHeight} decoding="async" />}
+  </figure>
 
   useLayoutEffect(() => {
     const dialog = dialogRef.current
@@ -117,17 +123,10 @@ export default function ProjectDetail({ projectId, opener, onBack, onNavigate })
     <DetailInfo content={content} />
     <div className="detail-scroll" ref={viewportRef} tabIndex="0" aria-label="프로젝트 상세 콘텐츠">
       <article key={projectId} className="detail-article">
-        <figure className="detail-cover" ref={coverRef} data-artwork={artwork || undefined} data-fit={heroFit}>
-          {heroImage && <img src={heroImage} alt={heroAlt || title} width={heroWidth} height={heroHeight} decoding="async" />}
-        </figure>
-        {projectId === 'ProjectName' && <>
-          <MonoLogContent scrollRef={viewportRef} />
-          <MonoLogAdditions scrollRef={viewportRef} award={content.award} />
-        </>}
-        {projectId === 'project-02' && <>
-          <NotomatoContent />
-          <NotomatoAdditions scrollRef={viewportRef} />
-        </>}
+        {projectId === 'ProjectName' && <MonoLogContent cover={cover} scrollRef={viewportRef} url={content.url} />}
+        {isNotomato && <NotomatoContent cover={cover} scrollRef={viewportRef} url={content.url} />}
+        {isLetsSync && <LetsSyncContent cover={cover} scrollRef={viewportRef} url={content.url} award={content.award} />}
+        {projectId !== 'ProjectName' && !isNotomato && !isLetsSync && cover}
         {projectId === 'project-03' && <ShwimpyoContent scrollRef={viewportRef} />}
         {detailSections.map(section => <section className="detail-section" key={section.id}>
           {section.title && <h2>{section.title}</h2>}

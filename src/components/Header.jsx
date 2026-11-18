@@ -10,8 +10,8 @@ export default function Header({ onSection }) {
   return <header className="site-header" lang="en">
     <a className="site-logo" ref={ref} href="#hero" onClick={onSection} aria-label="Uoojin home" dangerouslySetInnerHTML={{ __html: logo }} />
     <nav aria-label="Main navigation">
-      <a href="#about" onClick={onSection}>ABOUT</a>
       <a href="#projects" onClick={onSection}>WORKS</a>
+      <a href="#contact" onClick={onSection}>CONTACT</a>
     </nav>
   </header>
 }
